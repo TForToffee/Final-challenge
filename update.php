@@ -12,7 +12,7 @@
 $id = $_GET['ID'];
 include "config.php";
 $Rdata = mysqli_query($con, "select * from tbltodolistkehidupan where ID = $id");
-
+$data = mysqli_fetch_array($Rdata);
 
 ?>
 
@@ -22,10 +22,11 @@ $Rdata = mysqli_query($con, "select * from tbltodolistkehidupan where ID = $id")
             <div class="row justify-content-center m-auto shadow bg-white mt-3 py-3 col-md-6">
                 <h3 class="text-center"><b>Update To Do List Kehidupan</b></h3>
             <div class="col-8">
-                <input type="text" name="" class="form-control">
+                <input type="text" value="<?php echo $data['list'] ?>" name="list" class="form-control">
             </div>
             <div class="col-2">
                 <button type="button" class="btn btn-outline-dark">Masukkan</button>
+                <input type="hidden" name="id" value="<?php echo $data['ID'] ?>">
             </div>
             </div>
         </div>
